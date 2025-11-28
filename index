@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Interactive Photo Gallery</title>
     <style>
+        /* Main image container */
         #image {
             width: 400px;
             height: 300px;
@@ -17,11 +18,21 @@
             font-size: 18px;
             color: white;
             text-shadow: 1px 1px 2px black;
+            /* Added transition for smooth effect */
+            transition: background-image 0.5s ease-in-out; 
         }
+        /* Thumbnail images */
         .thumbnail {
             width: 100px;
+            height: 100px; /* Added height for consistent thumbnails */
+            object-fit: cover; /* Ensures images cover the area without distortion */
             margin: 5px;
             cursor: pointer;
+            border: 2px solid transparent; /* Border for hover effect */
+            transition: border 0.3s;
+        }
+        .thumbnail:hover {
+            border: 2px solid blue;
         }
     </style>
 </head>
@@ -29,10 +40,10 @@
 
 <div id="image">Hover over an image below to display here.</div>
 
-<img src="https://via.placeholder.com/100x100?text=1" alt="Image 1" class="thumbnail" onmouseover="upDate(this)" onmouseout="undo()">
-<img src="https://via.placeholder.com/100x100?text=2" alt="Image 2" class="thumbnail" onmouseover="upDate(this)" onmouseout="undo()">
-<img src="https://via.placeholder.com/100x100?text=3" alt="Image 3" class="thumbnail" onmouseover="upDate(this)" onmouseout="undo()">
+<img src="https://via.placeholder.com/100x100/ADD8E6?text=Landscape" alt="A calming landscape view" class="thumbnail" onmouseover="upDate(this)" onmouseout="undo()">
+<img src="https://via.placeholder.com/100x100/90EE90?text=Cityscape" alt="A vibrant city skyline" class="thumbnail" onmouseover="upDate(this)" onmouseout="undo()">
+<img src="https://via.placeholder.com/100x100/F08080?text=Portrait" alt="A classic portrait photo" class="thumbnail" onmouseover="upDate(this)" onmouseout="undo()">
 
-<script src="gallery.js"></script>
+<script src="gallery.js" defer></script>
 </body>
 </html>
