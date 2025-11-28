@@ -1,19 +1,34 @@
+/* * This file contains the JavaScript functions for the interactive photo gallery.
+ */
+
+// Get a reference to the main display div once
+const mainImageDiv = document.getElementById('image');
+
+/**
+ * Updates the main display image and text when a thumbnail is hovered over.
+ * @param {HTMLImageElement} previewPic - The thumbnail image element being hovered.
+ */
 function upDate(previewPic) {
-    console.log("Mouse over triggered"); // check event
-    console.log("Alt text:", previewPic.alt); // check alt
-    console.log("Image source:", previewPic.src); // check src
+    // 1. Change the background image of the main div to the thumbnail's source (src)
+    const imageURL = previewPic.src;
+    mainImageDiv.style.backgroundImage = `url('${imageURL}')`;
+    
+    // 2. Change the text content to the thumbnail's alternative text (alt)
+    const altText = previewPic.alt;
+    mainImageDiv.textContent = altText;
 
-    // Update the text
-    document.getElementById('image').innerHTML = previewPic.alt;
-
-    // Update the background image
-    document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+    // Optional: Set a minimum height for the div to ensure it displays correctly 
+    // when the text is updated.
+    mainImageDiv.style.minHeight = '300px'; 
 }
 
+/**
+ * Resets the main display image and text when the mouse moves off a thumbnail.
+ */
 function undo() {
-    // Reset text
-    document.getElementById('image').innerHTML = "Hover over an image below to display here.";
+    // 1. Clear the background image
+    mainImageDiv.style.backgroundImage = 'none';
 
-    // Reset background
-    document.getElementById('image').style.backgroundImage = "url('')";
+    // 2. Reset the text content to the default message
+    mainImageDiv.textContent = 'Hover over an image below to display here.';
 }
